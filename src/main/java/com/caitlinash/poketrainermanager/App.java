@@ -7,6 +7,10 @@ import java.net.http.HttpResponse;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.googlecode.lanterna.screen.Screen;
+import com.googlecode.lanterna.screen.TerminalScreen;
+import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
+import com.googlecode.lanterna.terminal.Terminal;
 
 /* 
 * Experimenting with libraries and PokéAPI
@@ -32,8 +36,27 @@ public class App {
 
         JsonNode root = mapper.readTree(response.body());
 
-		System.out.println(root.get("name").asText());
-		System.out.println(root.get("id").asInt());
-		System.out.println(root.get("height").asInt());
+		// practice with Lanterna when displaying the name, id, and height of the Pokémon
+		DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory();
+		Terminal terminal = terminalFactory.createTerminal();
+
+        try (Screen screen = new TerminalScreen(terminal)) {
+            screen.startScreen();
+            screen.clear();
+            screen.newTextGraphics().putString(2, 2, "BILL'S PC");
+            screen.newTextGraphics().putString(2, 4,
+                "Name: " + root.get("name").asText());
+            screen.newTextGraphics().putString(2, 5,
+                "ID: " + root.get("id").asInt());
+            screen.newTextGraphics().putString(2, 6,
+                "Height: " + root.get("height").asInt());
+            screen.refresh();
+            Thread.sleep(5000); // keep screen open for 5 seconds (since there is no input yet)
+            screen.stopScreen();
+        }
+		
+		// System.out.println(root.get("name").asText());
+        // System.out.println(root.get("id").asInt());
+        // System.out.println(root.get("height").asInt());
 	}
 }
