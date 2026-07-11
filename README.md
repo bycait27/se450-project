@@ -13,7 +13,7 @@
 
 ## Sprint 2 (Project Idea)
 
-I will be building my own Bill's PC as a terminal application. It is basically a storage system for Pokémon trainers to organize their Pokémon. The user should be able to view their boxes, deposit and withdraw Pokémon, search, sort, and view their Pokémon, as well as save and load their progress so that they can come back and see their boxes. 
+I will be building my own Bill's PC as a terminal application. It is basically a storage system for Pokémon trainers to organize their Pokémon. The user should be able to view their boxes, deposit and withdraw Pokémon, search, sort, and view their Pokémon, as well as save and load their progress so that they can come back and see their boxes. If time allows, I would also like to add a very simple battle or gym mechanic.
 
 In addition to JUnit5, I plan on using the Jackson Core and Lanterna libraries through Maven. Jackson will allow me to convert the PokéAPI JSON data into Java objects for me to utilize in my app. Lanterna is for making the terminal app UI a little more polished and easier to navigate. I will also be using the `java.net.http.HttpClient` to send requests to the PokéAPI.
 
